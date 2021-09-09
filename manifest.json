@@ -1,0 +1,43 @@
+{
+    "name": "SKS",
+    "version": "1.0",
+    "description": "京训钉半自动步枪",
+    "manifest_version": 2,
+    "icons": {
+        "128": "images/tv.png"
+    },
+    "background": {
+        "page": "html/background.html"
+    },
+    "browser_action": {
+        "default_title": "SKS",
+        "default_icon": "images/tv.png"
+    },
+    "content_scripts": [{
+        "matches": ["http://www.bjjnts.cn/*", "https://www.bjjnts.cn/*"], 
+        "all_frames": true,
+        "exclude_globs": ["*.jpg", "*.jpeg", "*.gif", "*.png", "*.bmp", "*.webp",
+            "*.css", "*.swf", "*.js", "*.zip", "*.rar", "*.tar", "*.tar.gz", "*.tgz", "*.tar.bz2", "*.tbz2",
+            "*.doc", "*.docx", "*.ppt", "*.pptx", "*.xls", "*.xlsx", "*.pdf", "*.xml", "*.txt",
+            "*.mpg", "*.mpeg", "*.qt", "*.mp4", "*.m4v", "*.m4a", "*.mp3", "*.ogv", "*.ogm", "*.ogg", "*.oga", "*.webm", "*.wav",
+            "*.", "*."
+        ],
+        "css": [],
+        "js": ["js/inject.js"],
+        "run_at": "document_end"
+    }],
+    "web_accessible_resources": [
+        "js/*",
+        "getFrameId"
+    ],
+    "permissions": [
+        "tabs",
+        "cookies",
+        "activeTab",
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>",
+        "notifications"
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
